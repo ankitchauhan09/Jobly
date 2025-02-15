@@ -1,0 +1,30 @@
+{
+  "id": "15",
+  "jobTitle": "Backend Developer",
+  "jobDescription": "This is a Frontend job",
+  "companyId": 2,
+  "recruiterId": "67857774-9ccf-49a8-89fc-d2193cba61a2",
+  "user": {
+    "id": "67857774-9ccf-49a8-89fc-d2193cba61a2",
+    "name": null,
+    "email": "ankitchauhan0906@gmail.com",
+    "contact": "12313113",
+    "password": null,
+    "roleName": "RECRUITER"
+  },
+  "salaryRange": "5-9 lpa",
+  "jobDate": "2024-09-28T17:15:34.164+00:00",
+  "requiredSkillIds": [
+    1
+  ],
+  "requiredSkills": [
+    {
+      "id": 1,
+      "skillName": "Python",
+      "skillDescription": "Programming Language"
+    }
+  ],
+  "fieldTemplates": null,
+  "jobTypeId": 21,
+  "minimumExperience": 1
+}

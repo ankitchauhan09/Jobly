@@ -1,0 +1,79 @@
+#page2jobs-section {
+    width: 100%;
+    height: 100vh;
+    padding: 40px 40px;
+}
+
+#page2cards-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px
+}
+
+.page2cards {
+    width: 350px;
+    position: relative;
+    height: 500px;
+    background-color: #f26f16;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: box-shadow 0.4s linear;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.page2cardstextcontent {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    bottom: 0px;
+    padding: 10px 10px;
+}
+
+.page2cardstextcontent button {
+    width: 91%;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #f26f16;
+    transition: all 0.4s linear;
+}
+
+.page2cardstextcontent button:hover {
+    scale: 1.01;
+    font-weight: 500;
+}
+
+.page2cards h4 {
+    padding: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.page2cards video {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 19px;
+    transition: opacity 0.4s linear;
+    z-index: 10;
+    /* Add transition to video element */
+}
+
+.page2cards:hover {
+    box-shadow: -10px -10px 30px #F26F16;
+}
+
+/* .page2cards:hover video {
+    opacity: 0;
+    z-index: 8;
+    /* Set opacity to 0 on hover */
+/* } */
