@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: EmailService
+
+  datasource:
+    username: root
+    password: ankit
+    url: jdbc:mysql://localhost:3306/email_service_sih
+
+  mail:
+    port: 587
+    host: smtp.gmail.com
+    username: ankit2211chauhan@gmail.com
+    password: utga nyjj yyjq kmlf
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

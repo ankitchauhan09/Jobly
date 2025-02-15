@@ -1,0 +1,40 @@
+server:
+  port: 8087
+
+
+# R2DBC configuration for MySQL
+spring:
+  mvc:
+    format:
+      date-time: iso
+  # JPA Configuration (for Flyway)
+  jpa:
+    hibernate:
+      ddl-auto: none  # Important: disable Hibernate's schema generation
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+      enabled: true
+
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/job_application_service_sih
+    username: root
+    password: ankit
+  flyway:
+    url: jdbc:mysql://localhost:3306/job_application_service_sih
+    user: ${spring.r2dbc.username}
+    password: ${spring.r2dbc.password}
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+  application:
+    name: JobApplicationService
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+

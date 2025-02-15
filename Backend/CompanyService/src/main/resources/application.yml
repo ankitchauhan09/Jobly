@@ -1,0 +1,26 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: CompanyService
+
+  #database and flyway configuration
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/company_service_sih
+    username: root
+    password: ankit
+  flyway:
+    url: jdbc:mysql://localhost:3306/company_service_sih
+    user: ${spring.r2dbc.username}
+    password: ${spring.r2dbc.password}
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+
+
+# Eureka client configuration
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}

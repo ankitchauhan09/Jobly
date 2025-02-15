@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: AuthService
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/user_service_sih
+    username: root
+    password: ankit
+
+server:
+  port: 8084
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+keycloak:
+  server:
+    url: http://localhost:8080
+  realm: sih-backend-realm
+  clientId: sih-backend-auth
+  clientSecret: ErF619OvLy3muYGpY1fJO62E0yl7fsa2
+
+authorization:
+  redirect:
+    uri: http://localhost:8099/auth/callback
+
+frontend:
+  home:
+    url: http://localhost:5173/oauth/callback
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true

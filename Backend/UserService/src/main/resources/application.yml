@@ -1,0 +1,17 @@
+server:
+  port: 8098
+
+spring:
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/user_service_sih
+    username: root
+    password: ankit
+
+  application:
+    name: UserService
+
+# Eureka client configuration
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}

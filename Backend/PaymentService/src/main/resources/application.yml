@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: PaymentService
+server:
+  port: 9094
+razorpay:
+  key_id: rzp_test_4NpMK0PvmRLIsO
+  key_secret: AE08WwU4yCCYViMzgKM47yjm
+
+# Eureka client configuration
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
