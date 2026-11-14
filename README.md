@@ -1,106 +1,136 @@
-# 🌟 Jobly - Redefining Job and Internship Hunting
+# Jobly — Career & Mentorship Platform
 
-A comprehensive career platform with real-time mentorship, smart job matching, and seamless user experience.
+Jobly is a career platform project intended to connect job seekers, companies, and mentors through job discovery, application management, and real-time communication.
 
-![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Spring Boot](https://img.shields.io/badge/-Spring%20Boot-6DB33F?style=flat-square&logo=spring&logoColor=white)
-![Kafka](https://img.shields.io/badge/-Kafka-231F20?style=flat-square&logo=apache-kafka&logoColor=white)
-![WebRTC](https://img.shields.io/badge/-WebRTC-333333?style=flat-square&logo=webrtc&logoColor=white)
-![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
-![Keycloak](https://img.shields.io/badge/-Keycloak-4479A1?style=flat-square&logo=keycloak&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=spring&logoColor=white)
+![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-231F20?logo=apachekafka&logoColor=white)
+![WebRTC](https://img.shields.io/badge/WebRTC-333333?logo=webrtc&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
+![Keycloak](https://img.shields.io/badge/Keycloak-4D4D4D?logo=keycloak&logoColor=white)
 
-## 🎯 Features
+## Project Overview
 
-### 👥 For Job Seekers
-- Smart job search based on skills and interests
-- One-click job applications
-- Customizable professional profiles
-- Real-time mentorship through video calls
-- Instant chat with mentors
-- Document management with Google Drive integration
+The repository is organized into a React frontend and a backend composed of separately organized Spring services.
 
-### 💼 For Companies
-- Comprehensive applicant tracking
-- Detailed candidate profiles
-- Automated notification system
-- Custom company profiles
-- Application status management
+### Product capabilities described in the project
 
-## 🏗️ Architecture
+**For job seekers**
+- Search jobs and internships by skills and interests.
+- Maintain a professional profile and submit applications.
+- Connect with mentors through chat and video-call features.
+- Manage documents with Google Drive integration.
 
-### Microservices
-- **AuthService**: Handles authentication and authorization
-- **ChatService**: Manages real-time chat functionality
-- **CompanyService**: Company profile and job posting management
-- **DiscoveryService**: Service registry and discovery
-- **EmailService**: Email notifications and communications
-- **JobApplicationService**: Application processing and tracking
-- **JobProfileService**: User profile management
-- **JobService**: Job listing and search functionality
-- **MentorService**: Mentorship matching and scheduling
-- **NotificationService**: Real-time notifications
-- **PaymentService**: Payment processing with Razorpay
-- **SkillService**: Skills management and matching
-- **UserService**: User account management
+**For companies**
+- Maintain company profiles and job postings.
+- Review candidate profiles and applications.
+- Manage application statuses and notifications.
 
-## 🛠️ Tech Stack
+## Backend Service Layout
 
-### Frontend
-- React.js with modern hooks and patterns
-- GSAP for smooth animations
-- WebRTC for video calling
-- WebSocket for real-time chat
-- Responsive design with modern CSS
+The `Backend/` directory currently contains these service modules:
 
-### Backend
-- Reactive Spring Boot
-- Spring Cloud Gateway
-- Feign Client for service communication
-- Spring Security with Keycloak
-- OAuth2.0 authentication
-- Apache Kafka for event-driven architecture
-- WebSocket and SSE for real-time updates
+- `AuthService` — authentication-related functionality.
+- `ChatService` — chat functionality.
+- `CompanyService` — company profiles and job postings.
+- `DiscoveryService` — service discovery.
+- `EmailService` — email notifications.
+- `JobApplicationService` — application processing.
+- `JobProfileService` — job-seeker profiles.
+- `JobService` — job listings and search.
+- `MentorService` — mentorship functionality.
+- `NotificationService` — notifications.
+- `PaymentService` — payment integration.
+- `SkillService` — skills management.
+- `UserService` — user accounts.
 
-### Database & Storage
-- Reactive MySQL
-- Google Drive API integration
-- Distributed caching
+## Architecture (high-level)
 
-### DevOps & Infrastructure
-- Load balancer for high availability
-- Microservices architecture
-- Service discovery
-- API Gateway
-- Containerization
+```mermaid
+flowchart TB
+    UI[React frontend] --> GW[Spring Cloud Gateway / API entry point]
+    GW --> AUTH[Auth service]
+    GW --> JOB[Job and application services]
+    GW --> PROFILE[User and profile services]
+    GW --> COMPANY[Company service]
+    GW --> MENTOR[Mentorship service]
+    JOB -. events .-> K[Apache Kafka]
+    K -. notifications .-> N[Notification service]
+    UI <--> CHAT[Chat / real-time communication]
+    UI <--> RTC[WebRTC video communication]
+    DISC[Discovery service] --- GW
+```
 
-## 🚀 Getting Started
+This is a conceptual view based on the repository's documented components and service names, not a deployment diagram. Verify actual routes, event flows, and service dependencies in source before relying on it operationally.
+
+## Technology Stack
+
+| Area | Technologies documented in this project |
+|---|---|
+| Frontend | React, GSAP |
+| Backend | Spring Boot, Spring WebFlux, Spring Cloud Gateway, OpenFeign |
+| Security | Spring Security, Keycloak, OAuth 2.0 |
+| Messaging | Apache Kafka |
+| Real-time | WebSocket, Server-Sent Events, WebRTC |
+| Data | MySQL, distributed caching |
+| Integrations | Google Drive API, Razorpay |
+| Infrastructure concepts | Service discovery, API gateway, load balancing, containerization |
+
+## Repository Structure
+
+```text
+Jobly/
+├── Backend/
+│   ├── AuthService/
+│   ├── ChatService/
+│   ├── CompanyService/
+│   ├── DiscoveryService/
+│   ├── EmailService/
+│   ├── JobApplicationService/
+│   ├── JobProfileService/
+│   ├── JobService/
+│   ├── MentorService/
+│   ├── NotificationService/
+│   ├── PaymentService/
+│   ├── SkillService/
+│   └── UserService/
+└── Frontend/
+    └── sih_frontend/
+```
+
+## Getting Started
 
 ### Prerequisites
-- Java 17 or higher
+
+The original project setup notes list:
+- Java 17+
 - Node.js 14+
 - MySQL 8+
 - Apache Kafka
-- Keycloak Server
-- Google Cloud Account (for Drive API)
-- Razorpay Account
+- Keycloak
+- Google Cloud credentials for Drive integration, if using that feature
+- Razorpay credentials for payment integration, if using that feature
 
-### Running Backend Services
+### Start backend services
 
-1. Start MySQL and Kafka servers
-2. Configure Keycloak server
-3. Start the Discovery Service first:
+1. Start and configure the required infrastructure (database, Kafka, and Keycloak).
+2. Start the discovery service first:
+
 ```bash
 cd Backend/DiscoveryService
 ./mvnw spring-boot:run
 ```
 
-4. Start other services (in any order):
+3. Start an individual backend service from its module directory:
+
 ```bash
-cd Backend/[ServiceName]
+cd Backend/<ServiceName>
 ./mvnw spring-boot:run
 ```
 
-### Running Frontend
+On Windows, use the Maven wrapper script `mvnw.cmd` where available.
+
+### Start the frontend
 
 ```bash
 cd Frontend/sih_frontend
@@ -108,42 +138,22 @@ npm install
 npm start
 ```
 
-## 🌟 Key Features in Detail
+### Configuration and security
 
-### 📹 Video Calling
-- Custom WebRTC implementation
-- Peer-to-peer communication
-- Real-time signaling through WebSocket
-- No third-party dependencies
-- Low-latency HD video calls
+Configure service URLs, database settings, Keycloak, Kafka, and third-party integrations using local environment/configuration files. Never commit API keys, passwords, client secrets, or production credentials. Exact environment-variable names and ports should be taken from each service's configuration.
 
-### 💬 Real-Time Updates
-- Server-Sent Events (SSE) integration
-- Kafka topic subscription
-- Multi-client support
-- Instant notifications
-- Resource-efficient push updates
+## Notes
 
-### 🔒 Security
-- OAuth2.0 authentication flow
-- Secure API Gateway
-- Role-based access control
-- Encrypted communications
-- Secure payment processing
+This README describes the repository's documented design and setup. The services and integrations may have different levels of implementation or may require configuration before the full platform runs end-to-end. Check each module's source and tests for its current status.
 
-## 💡 Future Enhancements
-- [ ] AI-powered job matching
-- [ ] Advanced analytics dashboard
-- [ ] Mobile application
-- [ ] Group mentorship sessions
-- [ ] Blockchain-verified certificates
+## Contributing
 
-## 🤝 Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+1. Create a focused branch for your change.
+2. Make the change in the relevant service or frontend module.
+3. Add or update tests.
+4. Run the checks for the affected module.
+5. Open a pull request with a concise summary and verification notes.
 
 ---
 
-Built with ❤️ by [Your Name]
+Built by Ankit Chauhan.
